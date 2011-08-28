@@ -1,0 +1,236 @@
+%
+% By John Peloquin
+% March 2009
+\documentclass[letterpaper]{article}
+\usepackage{amsmath,amssymb,amsthm,fourier,enumitem}
+
+% \newtheorem*{EX}{Example Theorem}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+
+\theoremstyle{plain}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{LPR}{Theorem (Left Permutation Representations)}
+\newtheorem*{RPR}{Theorem (Right Permutation Representations)}
+\newtheorem*{CA}{Theorem (Corresponding Actions)}
+
+\newcommand{\iso}{\cong}
+\newcommand{\perm}[1]{\mathrm{Perm}({#1})}
+
+\title{A Note on Function Notation}
+\author{John Peloquin}
+\date{March 2009}
+
+\begin{document}
+\maketitle
+\section*{Introduction}
+In mathematics, given a function $f:X\to Y$, the value of~$f$ at an argument $x\in X$ is conventionally written~$f(x)$, that is, notationally the function symbol is written to the left of the argument.\footnote{See~\cite{bergman97} for other common forms of function notation.} In many contexts this at most a superficial matter, and has little relevance to the mathematical results obtained. In other contexts, however (particularly those involving composition of functions) one must pay more attention to the notational choice.
+
+In this paper, we present examples from group theory involving groups and group actions where the choice of left-hand or right-hand notation has a more noticeable effect on particular objects and results obtained. We also see how the two notations in these cases nevertheless give rise to `equivalent' theories.
+
+The reader should be familiar with basic mathematical concepts. Some exposure to elementary group theory is helpful though not required.
+
+\section*{Groups of Functions}
+Choice of function value notation has an influence on function composite notation. Recall for functions $f:X\to Y$ and $g:Y\to Z$, the \emph{composite} function $g\circ f:X\to Z$ is usually defined by the rule
+\begin{equation}
+(g\circ f)(x)=g(f(x))\qquad(x\in X)\label{left}
+\end{equation}
+Note the composite $g\circ f$ means \emph{$f$~followed by~$g$}, and not the other way around. This is an important distinction. In fact, $f\circ g$~is not defined in general (since some~$g(y)$ may not lie in~$X$), and even if it is, $f\circ g$ need not equal $g\circ f$.
+
+The definition of $g\circ f$ in~(\ref{left}) is natural because it gives us an `associative law' for functions with their arguments; simplifying notation a bit, we have $(gf)x=g(fx)$ for all $x\in X$, hence we may even unambiguously write $gfx$ if desired.
+
+On the other hand, if $f$~and~$g$ are written on the right of their arguments, the composite is more naturally defined by
+\begin{equation}
+(x)(f\circ g)=((x)f)g\qquad(x\in X)\label{right}
+\end{equation}
+Under this notation, $f\circ g$ means $f$~followed by~$g$, so $f\circ g$ is always defined, but $g\circ f$ is not always defined. In this case our associative law becomes $x(fg)=(xf)g$ for all $x\in X$. This difference becomes important in contexts where operations are defined in terms of composition of functions.
+
+Recall a \emph{permutation} of a set~$S$ is a bijection $\sigma:S\to S$. If $\perm{S}$~denotes the set of all permutations of~$S$, then $\perm{S}$~is nonempty since the identity map $x\mapsto x$ ($x\in S$) is a bijection on~$S$. Also if $\sigma\in\perm{S}$, then $\sigma^{-1}\in\perm{S}$ since the inverse of a bijection on~$S$ is also a bijection on~$S$. Finally, note the elements of~$\perm{S}$ combine in a natural way: if $\sigma,\tau\in\perm{S}$, then $\sigma\circ\tau\in\perm{S}$, where we choose to define $\sigma\circ\tau$ according to~(\ref{left}). If we view composition as a `multiplication' operation on~$\perm{S}$ and write $\sigma\tau$ for $\sigma\circ\tau$, then this operation is associative: $(\rho\sigma)\tau=\rho(\sigma\tau)$ for all $\rho,\sigma,\tau\in\perm{S}$. These properties give~$\perm{S}$ a special algebraic structure, and $\perm{S}$~forms what is known as a group:
+\goodbreak
+\begin{defn}
+A \emph{group} is a pair $(G,*)$ where $G$~is a set and $*$~is a binary operation on~$G$ satisfying the following properties:
+\begin{enumerate}[itemsep=0pt]
+\item (\emph{Associativity}) For all $x,y,z\in G$, $(x*y)*z=x*(y*z)$.
+\item (\emph{Identity}) There exists $e\in G$ such that for all $x\in G$, $e*x=x=x*e$.
+\item (\emph{Inverses}) For all $x\in G$ there exists $y\in G$ such that $x*y=e=y*x$.
+\end{enumerate}
+We often say \emph{$G$~is a group under~$*$}, or \emph{$G$~is a group} (if the operation is clear).
+\end{defn}
+\noindent Thus $\perm{S}$~is a group under composition.
+
+Note that the definition of a group depends just as much on the group operation as on the set of elements, and a set of elements may have more than one possible group operation. In~$\perm{S}$ for example, we could just as easily have defined the operation (composition) according to~(\ref{right}) instead of~(\ref{left}). If we had done so, we would have obtained a \emph{different} group. Denote this group by~$\perm{S}_r$. In~$\perm{S}_r$, the product~$\sigma\tau$ is the permutation \emph{$\sigma$~followed by~$\tau$}, whereas in~$\perm{S}$ the product~$\sigma\tau$ is the permutation \emph{$\tau$~followed by~$\sigma$}. Again, these permutations are not in general the same, hence the two groups $\perm{S}$~and~$\perm{S}_r$ are not the same despite consisting of the same set of permutations.
+
+Here we see how our choice of notation can influence our mathematical objects. If our function notation is left-handed, the natural permutation group is~$\perm{S}$, whereas if our notation is right-handed, the natural (different) group is~$\perm{S}_r$. Other groups (and more generally other mathematical structures) defined in terms of composition of functions can be similarly affected.
+
+Intuitively it might be thought that these differences, while noticeable, should not significantly affect resulting theory. For example, $\perm{S}$ and $\perm{S}_r$, while not the same group, are certainly very similar; they consist of the same underlying set of permutations, and they just compose them in different order. In fact it might be argued that $\perm{S}$ and $\perm{S}_r$ are `mirror images' of one another, and hence any theory obtained from one should be `equivalent' to that obtained from the other.
+
+In a certain sense which will become clearer, this intuition is essentially correct, and it can be partially expressed using the notion of a group isomorphism:
+\goodbreak
+\begin{defn}
+Let $(G,*)$~and~$(H,\times)$ be groups. A \emph{homomorphism} from~$G$ into~$H$ is a function $\varphi:G\to H$ satisfying the following property: for all $x,y\in G$,
+$$\varphi(x*y)=\varphi(x)\times\varphi(y)$$
+The homomorphism~$\varphi$ is called an \emph{isomorphism} if $\varphi$~is bijective. In this case we say that \emph{$G$~and~$H$ are isomorphic (under~$\varphi$)}.\footnote{The reader will notice in this definition we have used left-hand notation for~$\varphi$; for our purposes this choice is immaterial.}
+\end{defn}
+\noindent Intuitively a homomorphism $\varphi:G\to H$ respects the group structure of~$G$ in~$H$ and ensures part of~$H$ is structurally similar to~$G$. If $z=xy$ in~$G$, then $\varphi(z)=\varphi(x)\varphi(y)$ in~$H$, so in other words under~$\varphi$ the product of two elements in~$G$ corresponds to the product of their corresponding elements in~$H$. An isomorphism is stronger, and ensures the structures of $G$~and~$H$ are identical. If $\varphi:G\to H$ is an isomorphism, then under~$\varphi$ the elements of~$G$ are in bijective correspondence with the elements in~$H$, and products in~$G$ correspond to products of corresponding elements in~$H$.
+
+The two groups $\perm{S}$ and $\perm{S}_r$ are isomorphic:
+\goodbreak
+\begin{prop}
+$\perm{S}$ and $\perm{S}_r$ are isomorphic under inversion $\sigma\mapsto\sigma^{-1}$.
+\end{prop}
+\begin{proof}
+Let $\varphi:\perm{S}\to\perm{S}_r$ be the inversion map $\sigma\mapsto\sigma^{-1}$. Note that $\varphi$~is well-defined since $\perm{S}$ and $\perm{S}_r$ consist of the same set of permutations. Also $\varphi$~is bijective since $(\sigma^{-1})^{-1}=\sigma$, so $\varphi$~is its own two-sided inverse.
+
+To verify that $\varphi$~is a homomorphism we need to show that for all $\sigma,\tau\in\perm{S}$,
+$$\varphi(\sigma\tau)=\varphi(\sigma)\varphi(\tau)$$
+Let $\sigma,\tau\in\perm{S}$. Note that $(\sigma\tau)^{-1}=\tau^{-1}\sigma^{-1}$, that is, the inverse of \emph{$\tau$~followed by~$\sigma$} is \emph{$\sigma^{-1}$~followed by~$\tau^{-1}$}. But the element `\emph{$\sigma^{-1}$~followed by~$\tau^{-1}$}' in~$\perm{S}_r$ is~$\sigma^{-1}\tau^{-1}$, hence $\varphi(\sigma\tau)=\sigma^{-1}\tau^{-1}$. Since $\varphi(\sigma)=\sigma^{-1}$ and $\varphi(\tau)=\tau^{-1}$, we have
+$$\varphi(\sigma\tau)=\sigma^{-1}\tau^{-1}=\varphi(\sigma)\varphi(\tau)$$
+as desired. Since $\sigma$~and~$\tau$ were arbitrary, the homomorphism property holds.
+
+Thus $\varphi$~is a bijective homomorphism, that is, $\varphi$~is an isomorphism as desired.
+\end{proof}
+\noindent Since $\perm{S}$~is isomorphic to~$\perm{S}_r$, the two groups are structurally identical. In fact, this result formally justifies the previous intuition that the two groups are `mirror images' of one another. This example partially illustrates how working in the `right-hand world' yields a theory that is, in a certain sense, equivalent to that from the `left-hand world': while particular objects or results may differ across worlds, there is natural analogy between them.
+
+\section*{Group Actions}
+As we saw above, the definition of a group arose naturally from the properties of permutations. It is therefore not surprising that any arbitrary group should induce a group of permutations. This phenomenon is illustrated by group actions.
+\subsection*{Left Actions}
+We first introduce the notion of a left group action:
+\begin{defn}
+Let $G$~be a group with identity $e\in G$ and $S$~be a set. A \emph{(left) group action of~$G$ on~$S$} is a binary operation $G\times S\to S$ (with values denoted $g\cdot x$) satisfying the following properties:
+\begin{enumerate}[itemsep=0pt]
+\item (\emph{Associativity}) For all $g,h\in G$ and $x\in S$, $(gh)\cdot x=g\cdot(h\cdot x)$.
+\item (\emph{Identity}) For all $x\in S$, $e\cdot x=x$.
+\end{enumerate}
+In this case we say that \emph{$G$~acts on~$S$ (on the left)}.
+\end{defn}
+\noindent Thus a group action describes an operation of a group on a set of elements where that operation is `compatible' with the internal group operation. When $G$~acts on the set~$S$, successive operation on~$S$ by elements in~$G$ just corresponds to the operation on~$S$ by products in~$G$, and the identity in~$G$ fixes all elements of~$S$.
+
+As an immediate example of a group action, note that $\perm{S}$~naturally acts on~$S$ with $\sigma\cdot x=\sigma(x)$ for $\sigma\in\perm{S}$ and $x\in S$.
+
+As a less immediate example: call a motion of a geometrical object in a given space a \emph{rigid motion} if it preserves distances between any two points on the object, and call a rigid motion a \emph{symmetry} if it maps the object to itself---that is, if the motion preserves the set of points of the object.\footnote{Note the individual points of the object need not be preserved, just the set of points as a whole.} For a given object, note the symmetries of that object form a group. Indeed, the trivial symmetry is an identity element, every symmetry has an inverse, and symmetries compose associatively.
+
+Now fix $n\ge3$ and consider a regular $n$-gon in $3$-space. It can be shown that this $n$-gon has $2n$~symmetries, consisting of certain rotations and reflections. In fact, if we fix an orientation and let $\sigma$~denote clockwise rotation of the $n$-gon by $2\pi/n$ radians about its center (in the plane of the $n$-gon), and let $\rho$~denote reflection of the $n$-gon in the line passing through its center and some fixed vertex, then it can be shown that any of the $2n$~symmetries may be obtained by variously composing $\sigma$~and~$\rho$. The resulting group of symmetries is called the \emph{dihedral group of order~$2n$}, and is denoted~$D_{2n}$ (sometimes~$D_n$). Notationally we choose to have the symmetries in~$D_{2n}$ multiply right-to-left, that is, according to~(\ref{left}).
+
+If we let $V$~denote the set of vertices of the $n$-gon, then $D_{2n}$~acts on~$V$ in a natural way: given $\tau\in D_{2n}$ and $v\in V$, let $\tau\cdot v$ denote the vertex to which $v$~is moved under~$\tau$ (or more accurately, the vertex previously occupying the position to which $v$~gets moved under~$\tau$). The associativity and identity properties are immediate. Similarly if $E$~denotes the set of edges of the $n$-gon, then $D_{2n}$~acts on~$E$.
+
+It is useful to note that \emph{any} group gives rise to a group action: if $G$~is a group, then it is immediate that $G$~acts on itself by left multiplication, that is, $G$~acts on~$G$ by the rule $g\cdot x=gx$ for $g,x\in G$, where $gx$~denotes a product in~$G$.
+
+Under the action of a group~$G$ on a set~$S$, the elements of~$G$ naturally induce permutations of~$S$. In fact, there is an important relationship between group actions and groups of permutations:
+\goodbreak
+\begin{LPR}
+Let $G$~be a group and $S$~be a set. If $G$~acts on~$S$ on the left, for $g\in G$ define $\sigma_g:S\to S$ by $\sigma_g(x)=g\cdot x$ ($x\in S$). Then $\sigma_g\in\perm{S}$ for all $g\in G$. Moreover, the map $\pi:G\to\perm{S}$ defined by $g\mapsto\sigma_g$ is a homomorphism.
+
+Conversely, if $\pi:G\to\perm{S}$ is any homomorphism, then $G$~acts on~$S$ by the rule $g\cdot x=\pi(g)(x)$ for $g\in G$ and $x\in S$.
+\end{LPR}
+\begin{proof}
+First suppose $G$~acts on~$S$ and fix $g\in G$. Note for $x,y\in S$ if $g\cdot x=g\cdot y$, then
+$$x=e\cdot x=(g^{-1}g)\cdot x=g^{-1}\cdot(g\cdot x)=g^{-1}\cdot(g\cdot y)=(g^{-1}g)\cdot y=e\cdot y=y$$
+Also if $y\in S$ is arbitrary and we set $x=g^{-1}\cdot y$, then
+$$g\cdot x=g\cdot(g^{-1}\cdot y)=(gg^{-1})\cdot y=e\cdot y=y$$
+These two properties show that $\sigma_g$~is a bijection on~$S$, that is, $\sigma_g\in\perm{S}$.
+
+Note if $g,h\in G$, then for all $x\in S$,
+\begin{equation}
+\sigma_{gh}(x)=(gh)\cdot x=g\cdot(h\cdot x)=\sigma_g(\sigma_h(x))=(\sigma_g\sigma_h)(x)\label{LPR:perm}
+\end{equation}
+That is, $\sigma_{gh}=\sigma_g\sigma_h$. This shows $\pi$~is a homomorphism since
+$$\pi(gh)=\sigma_{gh}=\sigma_g\sigma_h=\pi(g)\pi(h)$$
+
+Conversely, if $\pi:G\to\perm{S}$ is an arbitrary homomorphism and we define $\sigma_g=\pi(g)$ for $g\in G$ and define the operation $g\cdot x=\sigma_g(x)$ for $g\in G$ and $x\in S$, then for $g,h\in G$ and $x\in S$ we have
+\begin{equation}
+(gh)\cdot x=\sigma_{gh}(x)=(\sigma_g\sigma_h)(x)=\sigma_g(\sigma_h(x))=g\cdot(h\cdot x)\label{LPR:act}
+\end{equation}
+Also since $\sigma_e$~is the identity permutation, $e\cdot x=x$ for $x\in S$. Hence this operation gives an action of~$G$ on~$S$.
+\end{proof}
+\noindent This theorem suggests a definition:
+\begin{defn}
+Let $G$~be a group and $S$~be a set. A homomorphism $\pi:G\to\perm{S}$ is called a \emph{(left) permutation representation of~$G$ (on~$S$)}.
+\end{defn}
+\noindent With this terminology, the theorem states that every group action naturally gives rise to a permutation representation, and conversely every permutation representation naturally gives rise to a group action. In light of this result, we can understand the notions of group action and permutation representation as different ways of looking at the same underlying concept.%\footnote{One might be inclined to ask which characterization is better. Professor George Bergman humorously replied to this question in lecture by stating that this `is like asking ``Which eye do you like better, the left one or the right one?'' I want both for binocular vision!'}
+
+Up until now, we have not explicitly discussed the dependency of our examples on left-hand notation. For a group~$G$ to act on the left, the associative law for left actions requires for all $g,h\in G$ that the action of~$gh$ correspond to \emph{the action of~$h$ followed by the action of~$g$}. In other words, the action of a product must match the successive action of the factors in that product read right-to-left. This is exactly the situation described in~(\ref{left}), and is why this type of action is termed a \emph{left} action.
+
+The action of~$\perm{S}$ on~$S$ is a left action since the product~$\sigma\tau$ in~$\perm{S}$ means \emph{$\tau$~followed by~$\sigma$}; similarly for the action of the dihedral group given our choice of notation above. The action of a group on itself by left multiplication is trivially a left action since factors accumulate from right to left.
+
+Note on the other hand that $\perm{S}_r$~does \emph{not} act on~$S$ on the left by the rule $\sigma\cdot x=(x)\sigma$. Indeed, in this case we have
+$$(\sigma\tau)\cdot x=(x)(\sigma\tau)=((x)\sigma)\tau=\tau\cdot(\sigma\cdot x)$$
+---a rule which does not match that required for a left action. Similarly if we had defined products in the dihedral group according to~(\ref{right}) instead of~(\ref{left}), our operation above would have failed to give a left action.
+
+Even our theorem on left permutation representations depends critically on the left-hand notation in~$\perm{S}$. If $\perm{S}$~is replaced with~$\perm{S}_r$ in the statement of the theorem, the statement is no longer true; a left action does not in general yield a homomorphism into~$\perm{S}_r$, or conversely, in the manner indicated. More specifically, equations (\ref{LPR:perm})~and~(\ref{LPR:act}) are not correct for~$\perm{S}_r$, so the proof does not work if this change is made.
+
+\subsection*{Right Actions}
+There is, of course, a natural dual notion to that of a left action:
+\goodbreak
+\begin{defn}
+Let $G$~be a group with identity $e\in G$ and $S$~be a set. A \emph{right group action of~$G$ on~$S$} is a binary operation $S\times G\to S$ (with values denoted~$x\cdot g$) satisfying the following properties:
+\begin{enumerate}[itemsep=0pt]
+\item (\emph{Associativity}) For all $g,h\in G$ and $x\in S$, $x\cdot(gh)=(x\cdot g)\cdot h$.
+\item (\emph{Identity}) For all $x\in S$, $x\cdot e=x$.
+\end{enumerate}
+In this case we say that \emph{$G$~acts on~$S$ on the right}.
+\end{defn}
+\noindent Note under a right action, the action of a product of group elements must match the successive action of those elements read left-to-right. This is like the situation described by~(\ref{right}), and is why this type of action is called a right action.
+
+It should not be surprising that $\perm{S}_r$~acts on~$S$ on the right by $x\cdot\sigma=(x)\sigma$. Indeed, for $\sigma,\tau\in\perm{S}_r$ and $x\in S$ we have (like above)
+$$x\cdot(\sigma\tau)=(x)(\sigma\tau)=((x)\sigma)\tau=(x\cdot\sigma)\cdot\tau$$
+Thus associativity holds, and identity holds trivially.
+
+If $G$~is a group, then $G$~acts on itself on the right by right multiplication. More specifically, $G$~acts on~$G$ on the right by the rule $x\cdot g=xg$ for $g,x\in G$.
+
+There are many other examples in group theory of right (and left) actions. For our purposes what is important to note is how notational choice can influence the types of certain naturally occurring actions. If our notation is left-handed, then groups influenced by this notation may more naturally give rise to left actions. And conversely, if our notation is right-handed, they may more naturally give rise to right actions. This is illustrated, for example, by $\perm{S}$ and $\perm{S}_r$ acting on~$S$, as well as other groups whose operations are defined in terms of composition.\footnote{At the same time, examples like left and right group multiplication show how both types of actions can arise independently of notation, so in general we will encounter both regardless of our notational choice. Also, certain types of naturally occurring actions may influence our notational choices. See~\cite{bergman97} for examples from module theory.}
+
+Right actions are also intimately related to permutation representations:
+\goodbreak
+\begin{defn}
+Let $G$~be a group and $S$~be a set. A homomorphism $\rho:G\to\perm{S}_r$ is called a \emph{right permutation representation of~$G$ (on~$S$)}.\footnote{Note the terminology of `left' versus `right' permutation representation is not standard. We use this language merely to distinguish the two types of homomorphisms defined. In most contexts, one simply defines `permutation representation' relative to whichever notation is being used.}
+\end{defn}
+\begin{RPR}
+If $G$~acts on~$S$ on the right, then the mapping $g\mapsto\tau_g$, where $\tau_g:S\to S$ is defined by $(x)\tau_g=x\cdot g$ for $g\in G$ and $x\in S$, gives a right permutation representation of~$G$ on~$S$.
+
+Conversely if $\rho$~is a right permutation representation of~$G$ on~$S$, then $G$~acts on~$S$ on the right by the rule $x\cdot g=(x)(\rho(g))$.
+\end{RPR}
+\noindent The proof proceeds similarly to that for left representations, so we omit it.
+
+Here once again we encounter strong analogy between left-hand and right-hand worlds. Under left-hand notation, where $\perm{S}$~is more natural, the notions of left action and left permutation representation are the more basic. Under right-hand notation, this role is served by right actions and right permutation representations. Thus while notational choice influences which set of concepts is more basic to our theory, we obtain similar results with either choice.
+
+\subsection*{Corresponding Actions}
+While discussing left and right group actions, it is useful to note a correspondence between them:
+\begin{CA}
+Let $G$~be a group and $S$~be a set. If $g\cdot x$ denotes a left action of~$G$ on~$S$, then the rule $x\cdot g=g^{-1}\cdot x$ gives a right action of~$G$ on~$S$.
+
+Conversely if $x\cdot g$ denotes a right action, then $g\cdot x=x\cdot g^{-1}$ gives a left action.
+\end{CA}
+\begin{proof}
+We prove the first claim; the second follows similarly.
+
+Suppose $g\cdot x$ denotes a left action of~$G$ on~$S$, and define $x\cdot g=g^{-1}\cdot x$. Then for $g,h\in G$ and $x\in S$ we have
+$$x\cdot(gh)=(gh)^{-1}\cdot x=(h^{-1}g^{-1})\cdot x=h^{-1}\cdot(g^{-1}\cdot x)=(x\cdot g)\cdot h$$
+Also if $e\in G$ is the identity, then $x\cdot e=e^{-1}\cdot x=e\cdot x=x$ for all $x\in S$. Thus the operation given by $x\cdot g$ satisfies both properties for a right action of~$G$ on~$S$, as desired.
+\end{proof}
+\noindent This theorem may be summarized by saying that \emph{the element~$g$ acts on the left (right) in the same way that $g^{-1}$~acts on the right (respectively left)}. Thus inversion allows us to switch between left and right actions, and shows that the two types of actions are in this sense equally prevalent. Left and right actions related by inversion are called \emph{corresponding actions}.
+
+Note this result agrees with our isomorphism between $\perm{S}$ and $\perm{S}_r$ (and more generally with similar isomorphisms between other groups with inverted operations). We know that $\sigma$~behaves in~$\perm{S}$ like $\sigma^{-1}$~behaves in~$\perm{S}_r$, and we know that these groups act oppositely on~$S$. Hence it makes sense that $\sigma$~acts on the left (right) like $\sigma^{-1}$~acts on the right (respectively left) in general.
+
+As a useful illustration of corresponding actions, we note that when defining an action of~$G$ on itself by left or right multiplication, we have at least four immediate options for the action of $g\in G$ on $x\in G$:
+
+\bigskip
+\begin{tabular}{rll}
+1.&$g\cdot x=gx$&left action, left multiplication\\
+2.&$g\cdot x=xg^{-1}$&left action, right multiplication\\
+3.&$x\cdot g=g^{-1}x$&right action corresponding to 1, left multiplication\\
+4.&$x\cdot g=xg$&right action corresponding to 2, right multiplication
+\end{tabular}
+
+\bigskip
+\noindent The first two actions yield left representations, while the second two actions yield right representations. For this reason it is common to encounter actions 1~and~2 where left-hand notation is used, and 3~and~4 where right-hand notation is used.\footnote{Where left-hand notation is used, action~1 is called the \emph{left regular representation} of~$G$, and action~2 is called the \emph{right regular representation} of~$G$; where right-hand notation is used, these names are given to actions 3~and~4, respectively.}
+
+\section*{Conclusion}
+These examples from group theory illustrate how choice of function notation can influence particular objects or results obtained in one's theory. They also show how the choices can nevertheless give rise to essentially equivalent theories.\footnote{I thank George Bergman and Richard Foote for discussions of some of the material in this paper.}
+
+\begin{thebibliography}{0}
+\bibitem{bergman97} Bergman, George~M. `Notes on composition of maps' (course handout). UC~Berkeley, Spring~1997.\\
+\verb$http://math.berkeley.edu/~gbergman/grad.hndts/left+right.ps$
+\bibitem{dummit03} Dummit, David~S. and Richard~M. Foote. \emph{Abstract Algebra, 3rd~ed.} Wiley, 2003.
+\end{thebibliography}
+\end{document}
