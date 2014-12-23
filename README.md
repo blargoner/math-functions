@@ -1,4 +1,4 @@
-# Notes on function notation
+# A note on function notation
 By John Peloquin.
 
 [![PDF Status](https://www.sharelatex.com/github/repos/blargoner/math-functions/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/blargoner/math-functions/builds/latest/output.pdf)
